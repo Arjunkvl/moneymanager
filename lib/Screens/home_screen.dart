@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:moneymanager/Screens/details.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -68,10 +69,18 @@ class Home extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
         height: MediaQuery.of(context).size.height * 0.1,
         child: IconButton(
-          onPressed: () {},
+          onPressed: () => toDetails(context),
           icon: const Icon(CupertinoIcons.news),
         ),
       ),
     );
   }
+}
+
+void toDetails(context) {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => const DetailsScreen(),
+    ),
+  );
 }

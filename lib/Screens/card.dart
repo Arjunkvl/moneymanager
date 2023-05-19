@@ -4,7 +4,11 @@ class CstmCard extends StatelessWidget {
   final String heading;
   final String amount;
 
-  const CstmCard({super.key, required this.heading, required this.amount});
+  const CstmCard({
+    super.key,
+    required this.heading,
+    required this.amount,
+  });
 
   @override
   Widget build(BuildContext context) {
