@@ -65,6 +65,13 @@ class Home extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        height: MediaQuery.of(context).size.height * 0.1,
+        child: IconButton(
+          onPressed: () {},
+          icon: const Icon(CupertinoIcons.news),
+        ),
+      ),
     );
   }
 }
