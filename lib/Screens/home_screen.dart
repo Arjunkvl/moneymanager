@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -38,32 +39,29 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.06),
-        child: Center(
-          child: Column(
-            children: [
-              Container(
-                alignment: Alignment.topLeft,
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                height: MediaQuery.of(context).size.height * 0.12,
-                width: MediaQuery.of(context).size.width * 1,
-                child: const Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Balance',
-                        style: TextStyle(fontFamily: 'mono', fontSize: 14),
-                      ),
-                      Text('2000Rs')
-                    ],
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: Padding(
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),
+          child: SizedBox(
+            height: 200,
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: const Card(
+              clipBehavior: Clip.hardEdge,
+              child: Align(
+                alignment: Alignment.center,
+                child: ListTile(
+                  leading: Text(
+                    'Total Balance',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  trailing: Text(
+                    ' 2000',
+                    style: TextStyle(fontSize: 25),
                   ),
                 ),
               ),
-            ],
+            ),
           ),
         ),
       ),
