@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:hive_flutter/hive_flutter.dart';
 import 'Screens/home_screen.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
-
+  await Hive.initFlutter();
+  await Hive.openBox('Box');
   runApp(const MyApp());
 }
 

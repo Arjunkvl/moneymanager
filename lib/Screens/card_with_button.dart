@@ -4,12 +4,14 @@ class BtnCard extends StatelessWidget {
   final String heading;
   final String amount;
   final String btnText;
+  final Function action;
 
   const BtnCard({
     super.key,
     required this.heading,
     required this.amount,
     required this.btnText,
+    required this.action,
   });
 
   @override
@@ -45,7 +47,7 @@ class BtnCard extends StatelessWidget {
                           child: MaterialButton(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
-                            onPressed: () {},
+                            onPressed: () => action(),
                             color: Colors.green,
                             child: Text(btnText),
                           ),

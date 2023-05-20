@@ -1,9 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:moneymanager/Screens/details.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final _box = Hive.box('Box');
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +26,11 @@ class Home extends StatelessWidget {
           padding:
               EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.07),
           child: const CircleAvatar(
-              backgroundColor: Colors.green,
-              child: Padding(
-                padding: EdgeInsets.all(8.0),
-              )),
+            backgroundColor: Colors.green,
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+            ),
+          ),
         ),
         title: const Text(
           'Wallet',
@@ -47,18 +56,18 @@ class Home extends StatelessWidget {
           child: SizedBox(
             height: 200,
             width: MediaQuery.of(context).size.width * 0.9,
-            child: const Card(
+            child: Card(
               clipBehavior: Clip.hardEdge,
               child: Align(
                 alignment: Alignment.center,
                 child: ListTile(
-                  leading: Text(
+                  leading: const Text(
                     'Total Balance',
                     style: TextStyle(fontSize: 25),
                   ),
                   trailing: Text(
-                    ' 2000',
-                    style: TextStyle(fontSize: 25),
+                    _box.get('balance'),
+                    style: const TextStyle(fontSize: 25),
                   ),
                 ),
               ),

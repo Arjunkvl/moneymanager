@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:moneymanager/Screens/card.dart';
 import 'package:moneymanager/Screens/card_with_button.dart';
+import 'package:moneymanager/Screens/income_screen.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key});
@@ -10,28 +12,37 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  final _box = Hive.box('Box');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: ListView(
-        children: const [
+        children: [
           CstmCard(
             heading: 'Balance',
-            amount: '2000',
+            amount: _box.get('balance'),
           ),
           BtnCard(
             heading: 'Income',
-            amount: '20000',
+            amount: _box.get('income'),
             btnText: 'Show',
+            action: () => toIncomeScreen(context),
           ),
           BtnCard(
             heading: 'Expenditure',
-            amount: '20000',
+            amount: _box.get('expenditure'),
             btnText: 'Update',
+            action: () => toIncomeScreen(context),
           )
         ],
       )),
     );
   }
+}
+
+void toIncomeScreen(context) {
+  Navigator.of(context).push(MaterialPageRoute(
+      builder: (BuildContext context) => const IncomeScreen()));
 }
