@@ -5,16 +5,27 @@ class IncomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: TextField(
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(5.0),
+        child: Column(
+          children: [
+            const Text(
+              'Enter your Income',
+              style: TextStyle(fontSize: 20),
+            ),
+            Padding(
+              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+              child: const TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5.0),
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
